@@ -20,7 +20,7 @@ mongoose
 
 const PORT = 3001;
 
-app.use("/api/note", noteRouter);
+app.use("/api/game", gameRouter);
 
 app.get("/api/ping", (_req, res) => {
   res.send("pong");
