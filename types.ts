@@ -8,7 +8,7 @@ export interface Games {
   title: string;
   to: string;
   from: string;
-  questions: question[];
+  questions: question;
 }
 
 interface question {

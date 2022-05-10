@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { Games } from '../types';
 import GameModel from '../models/game.model';
 
 const getGames = async (): Promise<Games[]> => {
-  const Games = await GameModel.find({});
+  const Games: Games[] = await GameModel.find({});
   return Games;
 };
 
@@ -16,7 +15,7 @@ const getOneGame = async (title: string): Promise<Games> => {
 };
 
 const addOneGame = async (game: Games): Promise<Games> => {
-  const newGame = await GameModel.create(game);
+  const newGame: Games = await GameModel.create(game);
 
   if (!newGame) {
     throw Error('Game in not available');
@@ -26,9 +25,9 @@ const addOneGame = async (game: Games): Promise<Games> => {
 };
 
 const updateGame = async (game: Games): Promise<Games> => {
-  const updatedGame = await GameModel.findOneAndUpdate(
+  const updatedGame: Games | null = await GameModel.findOneAndUpdate(
     { title: game.title },
-    Game
+    game
   );
 
   if (!updatedGame) {
@@ -39,7 +38,9 @@ const updateGame = async (game: Games): Promise<Games> => {
 };
 
 const deleteGame = async (game: Games): Promise<Games> => {
-  const deletedGame = await GameModel.findOneAndDelete({ title: game.title });
+  const deletedGame: Games | null = await GameModel.findOneAndDelete({
+    title: game.title,
+  });
 
   if (!deletedGame) {
     throw Error('Game in not available');

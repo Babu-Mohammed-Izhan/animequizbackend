@@ -17,8 +17,16 @@ router.get('/:title', (req: Request, res: Response) => {
 router.post('/', (req: Request, res: Response) => {
   const Game = {
     title: req.body.title,
-    body: req.body.body,
-    author: req.body.author,
+    to: req.body.to,
+    from: req.body.from,
+    questions: {
+      q: req.body.questions.q,
+      op1: req.body.questions.op1,
+      op2: req.body.questions.op2,
+      op3: req.body.questions.op3,
+      op4: req.body.questions.op4,
+      ans: req.body.questions.ans,
+    },
   };
 
   const newGame = gameService.addOneGame(Game);
@@ -29,8 +37,16 @@ router.post('/', (req: Request, res: Response) => {
 router.delete('/', (req: Request, res: Response) => {
   const Game = {
     title: req.body.title,
-    body: req.body.body,
-    author: req.body.author,
+    to: req.body.to,
+    from: req.body.from,
+    questions: {
+      q: req.body.questions.q,
+      op1: req.body.questions.op1,
+      op2: req.body.questions.op2,
+      op3: req.body.questions.op3,
+      op4: req.body.questions.op4,
+      ans: req.body.questions.ans,
+    },
   };
 
   res.status(200).send(gameService.deleteGame(Game));
@@ -39,8 +55,16 @@ router.delete('/', (req: Request, res: Response) => {
 router.patch('/', (req: Request, res: Response) => {
   const Game = {
     title: req.body.title,
-    body: req.body.body,
-    author: req.body.author,
+    to: req.body.to,
+    from: req.body.from,
+    questions: {
+      q: req.body.questions.q,
+      op1: req.body.questions.op1,
+      op2: req.body.questions.op2,
+      op3: req.body.questions.op3,
+      op4: req.body.questions.op4,
+      ans: req.body.questions.ans,
+    },
   };
 
   const newGame = gameService.updateGame(Game);
