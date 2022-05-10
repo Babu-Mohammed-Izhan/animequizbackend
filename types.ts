@@ -3,3 +3,19 @@ export interface Notes {
   body: string;
   author: string;
 }
+
+export interface Games {
+  title: string;
+  to: string;
+  from: string;
+  questions: question[];
+}
+
+interface question {
+  q: string;
+  op1: string;
+  op2: string;
+  op3: string;
+  op4: string;
+  ans: string;
+}
