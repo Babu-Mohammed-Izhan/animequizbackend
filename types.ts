@@ -11,7 +11,7 @@ export interface Games {
   questions: question[];
 }
 
-interface question {
+export interface question {
   q: string;
   op1: string;
   op2: string;
