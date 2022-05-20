@@ -8,10 +8,10 @@ router.get('/', (_req: Request, res: Response) => {
   res.status(200).send(gameService.getGames());
 });
 
-router.get('/:title', (req: Request, res: Response) => {
-  const title = req.params.title;
+router.get('/:question', (req: Request, res: Response) => {
+  const question = req.params.question;
 
-  res.status(200).send(gameService.getOneGame(title));
+  res.status(200).send(gameService.getOneGame(question));
 });
 
 router.post('/', (req: Request, res: Response) => {
@@ -19,14 +19,7 @@ router.post('/', (req: Request, res: Response) => {
     title: req.body.title,
     to: req.body.to,
     from: req.body.from,
-    questions: {
-      q: req.body.questions.q,
-      op1: req.body.questions.op1,
-      op2: req.body.questions.op2,
-      op3: req.body.questions.op3,
-      op4: req.body.questions.op4,
-      ans: req.body.questions.ans,
-    },
+    questions: req.body.questions,
   };
 
   const newGame = gameService.addOneGame(Game);
@@ -39,14 +32,7 @@ router.delete('/', (req: Request, res: Response) => {
     title: req.body.title,
     to: req.body.to,
     from: req.body.from,
-    questions: {
-      q: req.body.questions.q,
-      op1: req.body.questions.op1,
-      op2: req.body.questions.op2,
-      op3: req.body.questions.op3,
-      op4: req.body.questions.op4,
-      ans: req.body.questions.ans,
-    },
+    questions: req.body.questions,
   };
 
   res.status(200).send(gameService.deleteGame(Game));
@@ -57,14 +43,7 @@ router.patch('/', (req: Request, res: Response) => {
     title: req.body.title,
     to: req.body.to,
     from: req.body.from,
-    questions: {
-      q: req.body.questions.q,
-      op1: req.body.questions.op1,
-      op2: req.body.questions.op2,
-      op3: req.body.questions.op3,
-      op4: req.body.questions.op4,
-      ans: req.body.questions.ans,
-    },
+    questions: req.body.questions,
   };
 
   const newGame = gameService.updateGame(Game);
