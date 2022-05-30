@@ -1,3 +1,4 @@
+import { Games } from './../types';
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import express, { Request, Response } from 'express';
 import gameService from '../service/gameService';
@@ -5,7 +6,15 @@ import gameService from '../service/gameService';
 const router = express.Router();
 
 router.get('/', (_req: Request, res: Response) => {
-  res.status(200).send(gameService.getGames());
+  gameService
+    .getGames()
+    .then((games: Games[]) => {
+      console.log(games);
+      res.status(200).send(games);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 router.get('/:question', (req: Request, res: Response) => {
